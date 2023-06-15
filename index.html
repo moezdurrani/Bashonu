@@ -1,0 +1,84 @@
+<!-- coding with nick -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bashonu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="top-bar">
+      <!-- <i class="material-icons">search</i> -->
+    </div>
+
+    <div class="img-area">
+      <div id="lyrics-container"></div>
+      <img src="" alt="">
+    </div>
+
+    <div class="song-details">
+      <p class="name"></p>
+      <p class="artist"></p>
+    </div>
+
+    <div class="progress-area">
+
+      <div class="progress-bar">
+        <audio id="main-audio" src=""></audio>
+      </div>
+
+      <!-- <div class="song-timer">
+        <span class="current-time">0:00</span>
+        <span class="max-duration">0:00</span>
+      </div> -->
+
+      <audio id="main-audio" src=""></audio>
+    </div>
+    
+
+    <div class="controls">
+
+      <i id="repeat-plist" class="" title="Playlist looped"></i>
+      <i id="prev" class=""></i>
+
+      <div class="play-pause">
+        <i class=""></i>
+      </div>
+
+      <i id="next" class=""></i>
+      <i id="more-music" class="material-icons">queue_music</i>
+    </div>
+
+    <div class="music-list">
+      <div class="header">
+        <div class="row">
+          <i class="list material-icons">queue_music</i>
+          <span>Music List</span>
+        </div>
+        <i id="close" class="material-icons">close</i>
+      </div>
+      <ul>
+       
+      </ul>
+    </div>
+
+
+  </div>
+
+  <script src="music-list.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
