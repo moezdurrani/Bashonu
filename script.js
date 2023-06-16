@@ -24,38 +24,33 @@ window.addEventListener("load", () => {
     playingSong();
 })
 
-
-// function showLyrics(fileName){
-//     fetch(fileName)
-//   .then(response => response.text())
-//   .then(lyrics => {
-//     // Split the lyrics into an array of lines
-//     const lines = lyrics.split('\n');
-    
-//     // Get the lyrics container element
-//     const lyricsContainer = document.getElementById('lyrics-container');
-    
-//     // Iterate over the lines and create <p> elements for each line
-//     for (const line of lines) {
-//       const paragraph = document.createElement('p');
-//       paragraph.textContent = line;
-//       lyricsContainer.appendChild(paragraph);
-      
-//       // Add a blank line using CSS margin-bottom
-//       const blankLine = document.createElement('p');
-//       blankLine.style.marginBottom = '1em'; // Adjust the value as needed
-//       lyricsContainer.appendChild(blankLine);
-//     }
-//   })
-//   .catch(error => {
-//     console.error('Error fetching the lyrics:', error);
-//   });
-// }
-
-// Add the 'lyrics-container' element in your HTML file:
-// <div id="lyrics-container"></div>
-
 // Update the 'showLyrics' function to clear the 'lyricsContainer' before fetching and adding new lyrics:
+// function showLyrics(fileName) {
+//     fetch(fileName)
+//       .then(response => response.text())
+//       .then(lyrics => {
+//         const lines = lyrics.split('\n');
+//         const lyricsContainer = document.getElementById('lyrics-container');
+  
+//         // Clear the lyrics container
+//         lyricsContainer.innerHTML = '';
+  
+//         for (const line of lines) {
+//           const paragraph = document.createElement('p');
+//           paragraph.textContent = line;
+//           paragraph.style.fontFamily = " 'Noto Nastaliq Urdu', serif, Arial, sans-serif";
+//           lyricsContainer.appendChild(paragraph);
+  
+//           const blankLine = document.createElement('p');
+//           blankLine.style.marginBottom = '1em';
+//           lyricsContainer.appendChild(blankLine);
+//         }
+//       })
+//       .catch(error => {
+//         console.error('Error fetching the lyrics:', error);
+//       });
+//   }
+
 function showLyrics(fileName) {
     fetch(fileName)
       .then(response => response.text())
@@ -66,21 +61,31 @@ function showLyrics(fileName) {
         // Clear the lyrics container
         lyricsContainer.innerHTML = '';
   
-        for (const line of lines) {
-          const paragraph = document.createElement('p');
-          paragraph.textContent = line;
-          paragraph.style.fontFamily = " 'Noto Nastaliq Urdu', serif, Arial, sans-serif";
-          lyricsContainer.appendChild(paragraph);
-  
-          const blankLine = document.createElement('p');
-          blankLine.style.marginBottom = '1em';
-          lyricsContainer.appendChild(blankLine);
-        }
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i].trim(); // Remove leading/trailing whitespace
+          
+            if (line !== '') {
+              const paragraph = document.createElement('p');
+              paragraph.textContent = line;
+              paragraph.style.fontFamily = "'Noto Nastaliq Urdu', serif, Arial, sans-serif";
+              paragraph.style.color = 'white'; // Set the text color
+              paragraph.style.lineHeight = '2.5'; // Set the line height
+              lyricsContainer.appendChild(paragraph);
+            } else if (i > 0 && lines[i - 1].trim() !== '') {
+              const blankLine = document.createElement('p');
+              blankLine.style.marginBottom = '1em';
+              lyricsContainer.appendChild(blankLine);
+            }
+          }
+          
+
+
       })
       .catch(error => {
         console.error('Error fetching the lyrics:', error);
       });
   }
+  
   
   // Update the 'loadMusic' function to pass the 'lyricsFile' to the 'showLyrics' function:
   function loadMusic(indexNumb) {
@@ -102,13 +107,12 @@ function showLyrics(fileName) {
 function loadMusic(indexNumb) {
     musicName.innerText = allMusic[indexNumb - 1].name;
     musicArtist.innerText = allMusic[indexNumb - 1].artist;
-    musicImg.src = `images/${allMusic[indexNumb - 1].img}.jpg`;
-    mainAudio.src = `songs/${allMusic[indexNumb - 1].src}.mp3`;
+    // musicImg.src = `images/${allMusic[indexNumb - 1].img}.jpg`;
+    // mainAudio.src = `songs/${allMusic[indexNumb - 1].src}.mp3`;
 
     const lyricsFile = allMusic[indexNumb - 1].lyricsFile;
     showLyrics(`lyrics/${lyricsFile}`);
 }
-
 
 // play music function
 function playMusic() {

@@ -2,59 +2,51 @@ let allMusic = [
 
     {
         name: "Asheqi Angar ki Birai",
-        artist: "Irfan Ali Taj",
+        artist: "Unknown",
         img: "music-1",
         src: "music-1",
-        lyricsFile: "let_it_be.txt"
+        lyricsFile: "asheqi_angar.txt"
     },
     {
         name: "Dunya Ju Baso",
         artist: "Irfan Ali Taj",
         img: "music-2",
         src: "music-2",
-        lyricsFile: "see_you_again.txt"
+        lyricsFile: "dunya_ju_baso.txt"
     },
     {
-        name: "Dunya Nasha Hoi Tu Nasee Nisiko",
-        artist: "Muhsin Hayat Shadab",
+        name: "Awa Ta Dunyo Pechitam",
+        artist: "Unknown",
         img: "music-3",
         src: "music-3",
-        lyricsFile: "bohemian_rhapsody.txt"
+        lyricsFile: "awa_ta_dunyo_pechitam.txt"
     },
     {
-        name: "Ka Dochaa Gti Ashru Daryah Birai",
-        artist: "Muhammad Faizan",
+        name: "Ishq Daryah",
+        artist: "Unknown",
         img: "music-4",
         src: "music-4",
-        lyricsFile: "let_it_be.txt"
+        lyricsFile: "ishq_daryah.txt"
     },
     {
-        name: "Awa Pii Pii Nasha",
-        artist: "Mansoor Shabab",
+        name: "Khosh Bigim",
+        artist: "Unknown",
         img: "music-5",
         src: "music-5",
-        lyricsFile: "see_you_again.txt"
+        lyricsFile: "khosh_bigim.txt"
     },
     {
-        name: "Asheq Majboor He Raheen Goi",
-        artist: "Ansar Elahi",
-        img: "music-6",
-        src: "music-6",
-        lyricsFile: "bohemian_rhapsody.txt"
-    },
-    {
-        name: "Last one",
+        name: "Scholote Biniyan Ma Xano Yaraan",
         artist: "Unknown",
         img: "music-6",
         src: "music-6",
-        lyricsFile: "let_it_be.txt"
-    },
+        lyricsFile: "scholote_biniyan.txt"
+    },  
     {
-        name: "Last one",
+        name: "Dashtu Sehra Asum Thrushni Armaan o sum",
         artist: "Unknown",
         img: "music-6",
         src: "music-6",
-        lyricsFile: "see_you_again.txt"
-    },
-    
+        lyricsFile: "dashtu_sehra_asum.txt"
+    },    
     ];
