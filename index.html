@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bashonu</title>
+  <title>Bashonu | A Home for Chitrali Lyrics</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,14 +21,19 @@
   <div class="container">
 
     <div class="top-bar">
-      <i class="material-icons" title="Search songs | being currently worked on">search</i>
+      <i class="material-icons" title="Search songs | currently being worked on">search</i>
 
-      <i class="material-icons" onclick="window.open('https://forms.gle/exhLZPiT5nVPAHtBA', '_blank')" title="Feedback">assistant</i>
+      <p onclick="window.location.href = 'index.html';">Bashonu</p>
+
       <i class="material-icons" onclick="window.open('https://forms.gle/S4PjJm2cEhA5zXCW6', '_blank')" title="Upload a song">add</i>
     </div>
 
     <div class="img-area">
-      <div id="lyrics-container"></div>
+      <div class="backgroundImg"></div>
+      <div id="lyrics-container">
+      
+        
+      </div>
       <img src="" alt="">
     </div>
 
@@ -54,17 +59,27 @@
 
     <div class="controls">
 
-      <p href="">Bashonu</p>
+      <!-- <p href="">Bashonu</p> -->
+      <i class="material-icons" onclick="window.open('https://forms.gle/exhLZPiT5nVPAHtBA', '_blank')" title="Feedback">assistant</i>
+      
 
       <i id="repeat-plist" class="" title="Playlist looped"></i>
       <i id="prev" class=""></i>
+
+      <i id="more-music" class="material-icons" title="songs list">queue_music</i>
 
       <div class="play-pause">
         <i class=""></i>
       </div>
 
+      
+
       <i id="next" class=""></i>
-      <i id="more-music" class="material-icons" title="songs list">queue_music</i>
+      
+      <a href="info.html" title="Information about the website">
+        <i class="material-icons">info</i>
+      </a>
+      <!-- <i class="material-icons" href="info.html" title="Information about the website">info</i> -->
     </div>
 
     <div class="music-list">

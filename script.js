@@ -24,33 +24,6 @@ window.addEventListener("load", () => {
     playingSong();
 })
 
-// Update the 'showLyrics' function to clear the 'lyricsContainer' before fetching and adding new lyrics:
-// function showLyrics(fileName) {
-//     fetch(fileName)
-//       .then(response => response.text())
-//       .then(lyrics => {
-//         const lines = lyrics.split('\n');
-//         const lyricsContainer = document.getElementById('lyrics-container');
-  
-//         // Clear the lyrics container
-//         lyricsContainer.innerHTML = '';
-  
-//         for (const line of lines) {
-//           const paragraph = document.createElement('p');
-//           paragraph.textContent = line;
-//           paragraph.style.fontFamily = " 'Noto Nastaliq Urdu', serif, Arial, sans-serif";
-//           lyricsContainer.appendChild(paragraph);
-  
-//           const blankLine = document.createElement('p');
-//           blankLine.style.marginBottom = '1em';
-//           lyricsContainer.appendChild(blankLine);
-//         }
-//       })
-//       .catch(error => {
-//         console.error('Error fetching the lyrics:', error);
-//       });
-//   }
-
 function showLyrics(fileName) {
     fetch(fileName)
       .then(response => response.text())
@@ -98,10 +71,6 @@ function showLyrics(fileName) {
     showLyrics(`lyrics/${lyricsFile}`);
   }
   
-
-// showLyrics("lyrics/see_you_again.txt")
-
-
 // load music function
 
 function loadMusic(indexNumb) {
@@ -279,7 +248,7 @@ const ulTag = container.querySelector("ul");
 // let create li tags according to array lenght for list
 
 
-
+allMusic.sort((a, b) => a.name.localeCompare(b.name));
 for (let i = 0; i < allMusic.length; i++) {
     let liTag = `<li li-index="${i + 1}">
     <div class="row">
@@ -315,8 +284,8 @@ function playingSong() {
     for (let j = 0; j < allLiTags.length; j++) {
    let audioTag = allLiTags[j].querySelector(".audio-duration");
         // let remove playing class from all other li expect the last one which is clicked
-        if(allLiTags[j].classList.contains("playing")){
-            allLiTags[j].classList.remove("playing");
+        if(allLiTags[j].classList.contains("Displaying")){
+            allLiTags[j].classList.remove("Displaying");
         //  let's get that audio duration value and pass to .audio-duration innertext
         let adDuration = audioTag.getAttribute("");
         audioTag.innerText = adDuration;
@@ -326,8 +295,8 @@ function playingSong() {
         // then this music is playing now and we'll style it
     
         if(allLiTags[j].getAttribute("li-index") == musicIndex){
-            allLiTags[j].classList.add("playing");
-            audioTag.innerText = "Playing";
+            allLiTags[j].classList.add("Displaying");
+            audioTag.innerText = "Displaying";
         }
     
         // adding on click attribute in all li tags
