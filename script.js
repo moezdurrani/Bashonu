@@ -287,7 +287,7 @@ for (let i = 0; i < allMusic.length; i++) {
       <p>${allMusic[i].artist}</p>
     </div>
     <audio class="${allMusic[i].src} " src="songs/${allMusic[i].src}.mp3"></audio>
-    <span id="${allMusic[i].src}" class="audio-duration">1:45</span>
+    <span id="${allMusic[i].src}" class="audio-duration"></span>
   </li>`;
   ulTag.insertAdjacentHTML("beforeend", liTag);
 
@@ -304,7 +304,7 @@ for (let i = 0; i < allMusic.length; i++) {
 
     liAudioDurationTag.innerText = `${totalMin}:${totalSec}`;
     // adding t-duration attribute with total duration value
-    liAudioDurationTag.setAttribute("t-duration", `${totalMin}:${totalSec}`);
+    liAudioDurationTag.setAttribute("", ``);
   });
 
 }
@@ -318,7 +318,7 @@ function playingSong() {
         if(allLiTags[j].classList.contains("playing")){
             allLiTags[j].classList.remove("playing");
         //  let's get that audio duration value and pass to .audio-duration innertext
-        let adDuration = audioTag.getAttribute("t-duration");
+        let adDuration = audioTag.getAttribute("");
         audioTag.innerText = adDuration;
         }
     
