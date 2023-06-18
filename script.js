@@ -46,7 +46,7 @@ function showLyrics(fileName) {
               lyricsContainer.appendChild(paragraph);
             } else if (i > 0 && lines[i - 1].trim() !== '') {
               const blankLine = document.createElement('p');
-              blankLine.style.marginBottom = '1em';
+              blankLine.style.marginBottom = '2em';
               lyricsContainer.appendChild(blankLine);
             }
           }
