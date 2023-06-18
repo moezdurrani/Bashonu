@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
 
 *{
-  margin: 0;
+  /* margin: 0; */
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
@@ -16,6 +16,7 @@
 }
 
 body{
+  margin-top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,6 +25,7 @@ body{
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px); /* For Safari */
   /* background: linear-gradient(to right top, #0a0a0a 0%, #1e1a1a 34%, #4b4a4b 67%, #0e0e0e 100%); */
+  margin: 0;
 }
 .background .shape{
   height: 200px;
@@ -47,9 +49,11 @@ body{
 }
 
 .container{
-  margin: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
   min-width: 100px;
   min-height: 650px;
+  margin-top: 0;
 
   width: 100%;
   max-width: 1000px;
@@ -66,8 +70,12 @@ body{
   background-blend-mode: screen;
   opacity: 0.9;
   backdrop-filter: blur(5px);
+  top: 0;
 }
 
+.top-bar{
+  height: 20px;
+}
 .top-bar p{
   font-family: 'Concert One', cursive;
   fill: white;
@@ -111,18 +119,17 @@ margin-right: 3%;
   position: relative;
   width: 100%;
   height: 550px;
+  /* min-height: 550px; */
   padding: 5px 5px 5px 5px;
   overflow: scroll;
   margin-top: 15px;
+  margin-bottom: 0;
   border-radius: 5%;
   border-radius: 5%;
 	box-shadow: 0 0 0 0px #ffffff,
 	0 0 2px #fff,
 	13px 13px 20px #31313163,
 	-10px -10px 20px #e6f6ff;
-
-  
-
 }
 .backgroundImg {
   position: fixed;
@@ -172,18 +179,22 @@ margin-right: 3%;
 }
 .song-details{
   text-align: center;
-  margin: 7px 0 7px 0;
+  margin: 0px 0 0px 0;
+  margin-bottom: 5px;
 }
 .song-details p{
   color: #ffffff;
 }
 .song-details .name{
   font-size: 21px;
+  margin: 0px;
+  margin-top: 5px;
 }
 .song-details .artist{
   font-size: 15px;
   opacity: 0.9;
   line-height: 35px;
+  margin: 0;
 }
 .progress-area{
   height: 0px;
@@ -227,7 +238,7 @@ margin-right: 3%;
   color: #ffffff;
 }
 .controls{
-  margin: 0px 0 5px 0;
+  margin: -10px 0 -10px 0;
 }
 
 .controls i{
