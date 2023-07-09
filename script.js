@@ -1,317 +1,187 @@
-// Coding With Nick
-// Add Tags And Elements
-
-const container = document.querySelector(".container"),
-    musicImg = container.querySelector(".img-area img"),
-    musicName = container.querySelector(".song-details .name"),
-    musicArtist = container.querySelector(".song-details .artist"),
-    mainAudio = container.querySelector("#main-audio"),
-    playpauseBtn = container.querySelector(".play-pause"),
-    nextBtn = container.querySelector("#next"),
-    prevBtn = container.querySelector("#prev"),
-    progressArea = container.querySelector(".progress-area"),
-    progressBar = container.querySelector(".progress-bar"),
-    musicList = container.querySelector(".music-list"),
-    moreMusicBtn = container.querySelector("#more-music"),
-    closemoreMusic = container.querySelector("#close");
 
 
 
-let musicIndex = Math.floor((Math.random() * allMusic.length) + 1);
-
-window.addEventListener("load", () => {
-    loadMusic(musicIndex);
-    playingSong();
-})
-
-function showLyrics(fileName) {
-    fetch(fileName)
-      .then(response => response.text())
-      .then(lyrics => {
-        const lines = lyrics.split('\n');
-        const lyricsContainer = document.getElementById('lyrics-container');
-  
-        // Clear the lyrics container
-        lyricsContainer.innerHTML = '';
-  
-        for (let i = 0; i < lines.length; i++) {
-            const line = lines[i].trim(); // Remove leading/trailing whitespace
-          
-            if (line !== '') {
-              const paragraph = document.createElement('p');
-              paragraph.textContent = line;
-              paragraph.style.fontFamily = "'Noto Nastaliq Urdu', serif, Arial, sans-serif";
-              paragraph.style.color = 'white'; // Set the text color
-              paragraph.style.lineHeight = '2.5'; // Set the line height
-              lyricsContainer.appendChild(paragraph);
-            } else if (i > 0 && lines[i - 1].trim() !== '') {
-              const blankLine = document.createElement('p');
-              blankLine.style.marginBottom = '2em';
-              lyricsContainer.appendChild(blankLine);
-            }
-          }
-          
-
-
-      })
-      .catch(error => {
-        console.error('Error fetching the lyrics:', error);
-      });
-  }
-  
-  
-  // Update the 'loadMusic' function to pass the 'lyricsFile' to the 'showLyrics' function:
-  function loadMusic(indexNumb) {
-    musicName.innerText = allMusic[indexNumb - 1].name;
-    musicArtist.innerText = allMusic[indexNumb - 1].artist;
-    musicImg.src = `images/${allMusic[indexNumb - 1].img}.jpg`;
-    mainAudio.src = `songs/${allMusic[indexNumb - 1].src}.mp3`;
-  
-    const lyricsFile = allMusic[indexNumb - 1].lyricsFile;
-    showLyrics(`lyrics/${lyricsFile}`);
-  }
-  
-// load music function
-
-function loadMusic(indexNumb) {
-    musicName.innerText = allMusic[indexNumb - 1].name;
-    musicArtist.innerText = allMusic[indexNumb - 1].artist;
-    // musicImg.src = `images/${allMusic[indexNumb - 1].img}.jpg`;
-    // mainAudio.src = `songs/${allMusic[indexNumb - 1].src}.mp3`;
-
-    const lyricsFile = allMusic[indexNumb - 1].lyricsFile;
-    showLyrics(`lyrics/${lyricsFile}`);
-}
-
-// play music function
-function playMusic() {
-    container.classList.add("paused");
-    playpauseBtn.querySelector("i").innerText = "";
-    mainAudio.play();
-}
-
-// pause music function
-function pauseMusic() {
-    container.classList.remove("paused");
-    playpauseBtn.querySelector("i").innerText = "play_arrow";
-    mainAudio.pause();
-}
-
-
-// Next Music function
-function nextMusic() {
-    musicIndex++; //increment of musicIndex by 1
-    // if musicIndex is greater than array length then musicIndex will be 1 so the first music play
-    musicIndex > allMusic.length ? musicIndex = 1 : musicIndex = musicIndex;
-    loadMusic(musicIndex);
-    playMusic();
-    playingSong();
-}
-// Prev Music function
-function prevMusic() {
-    musicIndex--; //increment of musicIndex by 1
-    // if musicIndex is less than array length then musicIndex will be 1 so the first music play
-    musicIndex < 1 ? musicIndex = allMusic.length : musicIndex = musicIndex;
-    loadMusic(musicIndex);
-    playMusic();
-    playingSong();
-}
-
-
-// play or Pause button event
-playpauseBtn.addEventListener("click", () => {
-    const isMusicPaused = container.classList.contains("paused");
-
-    isMusicPaused ? pauseMusic() : playMusic();
-
-});
-
-// next music button event
-nextBtn.addEventListener("click", () => {
-    nextMusic();
-});
-
-
-// prev music button event
-prevBtn.addEventListener("click", () => {
-    prevMusic();
-});
-
-// update progressbar width according to music current time
-mainAudio.addEventListener("timeupdate", (e) => {
-    const currentTime = e.target.currentTime; //getting playing song currenttime
-    const duration = e.target.duration; //getting playing total song duration
-    let progressWidth = (currentTime / duration) * 100;
-    progressBar.style.width = `${progressWidth}%`;
-
-
-
-    let musicCurrentTime = container.querySelector(".current-time"),
-        musicDuration = container.querySelector(".max-duration");
-    mainAudio.addEventListener("loadeddata", () => {
-
-        //  update song total duration
-        let mainAdDuration = mainAudio.duration;
-        let totalMin = Math.floor(mainAdDuration / 60);
-        let totalSec = Math.floor(mainAdDuration % 60);
-        if (totalSec < 10) { //if sec is less than 10 then add 0 before it
-            totalSec = `0${totalSec}`;
-        }
-
-        musicDuration.innerText = `${totalMin}:${totalSec}`;
-
+//Dropdown Menu
+document.addEventListener("DOMContentLoaded", function() {
+    var dropdownTrigger = document.getElementById("dropdown-trigger");
+    var dropdownContent = document.querySelector(".dropdown-content");
+    dropdownTrigger.addEventListener("click", function() {
+        dropdownContent.classList.toggle("active");
     });
 
-    //update playing song current time
-    let currentMin = Math.floor(currentTime / 60);
-    let currentSec = Math.floor(currentTime % 60);
-    if (currentSec < 10) { //if sec is less than 10 then add 0 before it
-        currentSec = `0${currentSec}`;
-    }
-
-    musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
-
 });
 
-// update playing song current width onaccording to the progress bar width
+//Blur the Background and open lyrics Container
+// document.addEventListener("DOMContentLoaded", function() {
+//     var lyricsTrigger = document.getElementById("lyrics");
+//     var lyricsContainer = document.querySelector(".lyrics");
+//     var mainWrapper = document.querySelector('.main');
+  
+//     lyricsTrigger.addEventListener("click", function() {
+//       lyricsContainer.classList.remove("inactive");
+//       lyricsContainer.classList.toggle("active");
+//       mainWrapper.classList.toggle('blurBackground');
+//     });
+//   });
+  
+//   //Unblur the Background and close lyrics Container
+//   document.addEventListener("DOMContentLoaded", function() {
+//     var closeLyrics = document.getElementById("close-lyrics");
+//     var lyricsContainer = document.querySelector(".lyricsContainer");
+//     var mainWrapper = document.querySelector('.main');
+  
+//     closeLyrics.addEventListener("click", function() {
+//       lyricsContainer.classList.toggle("inactive");
+//       lyricsContainer.classList.remove("active");
+//       mainWrapper.classList.remove('blurBackground'); 
+//     });
+//   });
 
-progressArea.addEventListener("click", (e) => {
-    let progressWidth = progressArea.clientWidth; //getting width of progress bar
-    let clickedOffsetX = e.offsetX; //getting offset x value
-    let songDuration = mainAudio.duration; //getting song total duration
-
-    mainAudio.currentTime = (clickedOffsetX / progressWidth) * songDuration;
-    playMusic();
-
-});
-
-// change loop, shufle, repeat icon onclick
-const repeatBtn = container.querySelector("#repeat-plist");
-repeatBtn.addEventListener("click", () => {
-    let getText = repeatBtn.innerText; //getting this tag innerText
-    switch (getText) {
-        case "repeat":
-            repeatBtn.innerText = "repeat_one";
-            repeatBtn.setAttribute("title", "song looped");
-            break;
-        case "repeat_one":
-            repeatBtn.innerText = "shuffle";
-            repeatBtn.setAttribute("title", "playback shuffled");
-            break;
-        case "shuffle":
-            repeatBtn.innerText = "repeat";
-            repeatBtn.setAttribute("title", "playlist looped");
-            break;
-
-    }
-
-});
-
-// above we just change icon, now let's work on what to do after song ended
-mainAudio.addEventListener("ended", () => {
-    let getText = repeatBtn.innerText; //getting this tag innerText
-    switch (getText) {
-        case "repeat":
-            nextMusic(); //calling nect music function
-            break;
-        case "repeat_one":
-            mainAudio.currentTime = 0; //setting audio current time to 0
-            loadMusic(musicIndex); //calling load music function with argument, in the argument there is a  index of current song
-            playMusic(); //calling playMusic Function
-            break;
-        case "shuffle":
-            let randIndex = Math.floor((Math.random() * allMusic.length) + 1);
-            do {
-                randIndex = Math.floor((Math.random() * allMusic.length) + 1);
-            } while (musicIndex == randIndex); //thi loop run until the next random number won't be the same of current musicIndex
-            musicIndex = randIndex; //passing randomIndex to musicIndex
-            loadMusic(musicIndex);
-            playMusic();
-            playingSong();
-            break;
-    }
-});
-
-// show the music list onclick music icon
-
-
-moreMusicBtn.addEventListener("click", () => {
-    musicList.classList.toggle("show");
-});
-closemoreMusic.addEventListener("click", () => {
-    moreMusicBtn.click();
-});
-
-
-const ulTag = container.querySelector("ul");
-
-// let create li tags according to array lenght for list
-
-
-allMusic.sort((a, b) => a.name.localeCompare(b.name));
-for (let i = 0; i < allMusic.length; i++) {
-    let liTag = `<li li-index="${i + 1}">
-    <div class="row">
-      <span>${allMusic[i].name}</span>
-      <p>${allMusic[i].artist}</p>
-    </div>
-    <audio class="${allMusic[i].src} " src="songs/${allMusic[i].src}.mp3"></audio>
-    <span id="${allMusic[i].src}" class="audio-duration"></span>
-  </li>`;
-  ulTag.insertAdjacentHTML("beforeend", liTag);
-
-  let liAudioDurationTag = ulTag.querySelector(`#${allMusic[i].src}`);
-  let liAudioTag = ulTag.querySelector(`.${allMusic[i].src}`);
-
-  liAudioTag.addEventListener("loadeddata", () => {
-    let duration = liAudioTag.duration;
-    let totalMin = Math.floor(duration / 60);
-    let totalSec = Math.floor(duration % 60);
-    if (totalSec < 10) { //if sec is less than 10 then add 0 before it
-        totalSec = `0${totalSec}`;
-    }
-
-    liAudioDurationTag.innerText = `${totalMin}:${totalSec}`;
-    // adding t-duration attribute with total duration value
-    liAudioDurationTag.setAttribute("", ``);
+document.addEventListener("DOMContentLoaded", function() {
+    var lyricsTrigger = document.getElementById("lyrics-trigger");
+    var lyricsContainer = document.querySelector(".lyricsContainer");
+    var mainWrapper = document.querySelector('.main');
+  
+    lyricsTrigger.addEventListener("click", function() {
+      lyricsContainer.classList.remove("inactive");
+      lyricsContainer.classList.toggle("active");
+      mainWrapper.classList.toggle('blurBackground');
+    });
   });
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    var closeLyrics = document.getElementById("close-lyrics");
+    var lyricsContainer = document.querySelector(".lyricsContainer");
+    var mainWrapper = document.querySelector('.main');
+  
+    closeLyrics.addEventListener("click", function() {
+      lyricsContainer.classList.toggle("inactive");
+      lyricsContainer.classList.remove("active");
+      mainWrapper.classList.remove('blurBackground'); 
+    });
+  });
+  
+  
 
-}
-// play particular song from the list on click of li tag
+document.addEventListener("DOMContentLoaded", function() {
+    const songDetails = document.querySelector('.main');
+  
+    for (var i = 0; i < allMusic.length; i++) {
+      const song = allMusic[i];
+  
+      const songItem = document.createElement('div');
+      songItem.classList.add('song');
+    songItem.style.background = 'linear-gradient(180deg, #22262A 0%, #181A1D 100%)';
+    songItem.style.border= '1px solid rgba(255, 255, 255, 0.05)';
+      songItem.style.borderRadius = '10px';
+      songItem.style.padding = '10px';
+      songItem.style.marginBottom = '10px';
+      songItem.setAttribute('data-index', i); // Store the index of the song
+  
+      const songName = document.createElement('div');
+      songName.classList.add('songName');
+      const name = document.createElement('p');
+      name.classList.add('name');
+      name.style.fontWeight = 'bold';
+      name.innerText = song.name;
+      name.style.fontFamily = 'M PLUS Rounded 1c, optima, sans-serif, Arial';
+      name.style.fontSize = '18px';
+      songName.appendChild(name);
 
-const allLiTags = ulTag.querySelectorAll("li");
-function playingSong() {
-    for (let j = 0; j < allLiTags.length; j++) {
-   let audioTag = allLiTags[j].querySelector(".audio-duration");
-        // let remove playing class from all other li expect the last one which is clicked
-        if(allLiTags[j].classList.contains("Displaying")){
-            allLiTags[j].classList.remove("Displaying");
-        //  let's get that audio duration value and pass to .audio-duration innertext
-        let adDuration = audioTag.getAttribute("");
-        audioTag.innerText = adDuration;
-        }
-    
-        // if there is an li tag which li index is equal to musicIndex
-        // then this music is playing now and we'll style it
-    
-        if(allLiTags[j].getAttribute("li-index") == musicIndex){
-            allLiTags[j].classList.add("Displaying");
-            audioTag.innerText = "Displaying";
-        }
-    
-        // adding on click attribute in all li tags
-        allLiTags[j].setAttribute("onclick", "clicked(this)");
+     
+  
+      const songInfo = document.createElement('div');
+      songInfo.classList.add('songInfo');
+  
+      const writerText = document.createElement('span');
+      writerText.innerText = 'Writer: ';
+      writerText.style.fontWeight = 'bold';
+      writerText.style.color = '#888';
+      writerText.style.fontFamily = 'Arial, sans-serif';
+      writerText.style.fontSize = '15px';
+      songInfo.appendChild(writerText);
+  
+      const writer = document.createElement('p');
+      writer.classList.add('writer');
+      writer.style.color = '#888';
+      writer.innerText = song.writer;
+      writerText.style.marginRight = '0.5em';
+      writer.style.fontFamily = 'Arial, sans-serif';
+      writer.style.fontSize = '16px';
+      songInfo.appendChild(writer);
+  
+      const separator = document.createElement('p');
+      separator.innerText = ' | ';
+      separator.style.color = '#888';
+      separator.style.fontWeight = 'bold';
+      songInfo.appendChild(separator);
+  
+      const singerText = document.createElement('span');
+      singerText.innerText = 'Singer: ';
+      singerText.style.fontWeight = 'bold';
+      singerText.style.color = '#888';
+      singerText.style.marginRight = '0.5em';
+      singerText.style.fontFamily = 'Arial, sans-serif';
+      singerText.style.fontSize = '15px';
+      songInfo.appendChild(singerText);
+  
+      const singer = document.createElement('p');
+      singer.classList.add('singer');
+      singer.style.color = '#888';
+      singer.innerText = song.singer;
+      singer.style.fontFamily = 'Arial, sans-serif';
+      singer.style.fontSize = '16px';
+      songInfo.appendChild(singer);
+  
+      songItem.appendChild(songName);
+      songItem.appendChild(songInfo);
+  
+      // Add click event listener to each song item
+      songItem.addEventListener('click', function() {
+        const lyricsContainer = document.querySelector('.lyricsContainer');
+        const lyrics = document.getElementById('lyrics');
+        const index = this.getAttribute('data-index'); // Get the index of the clicked song
+  
+        // Fetch and display lyrics for the selected song
+        fetch(`lyrics/${allMusic[index].lyricsFile}`)
+          .then(response => response.text())
+          .then(lyricsText => {
+            const lines = lyricsText.split('\n');
+            lyrics.innerHTML = '';
+  
+            for (let i = 0; i < lines.length; i++) {
+              const line = lines[i].trim();
+  
+              if (line !== '') {
+                const paragraph = document.createElement('p');
+                paragraph.textContent = line;
+                paragraph.style.fontFamily = "'Noto Nastaliq Urdu', serif, Arial, sans-serif";
+                paragraph.style.color = 'white';
+                paragraph.style.lineHeight = '2.5';
+                lyrics.appendChild(paragraph);
+              } else if (i > 0 && lines[i - 1].trim() !== '') {
+                const blankLine = document.createElement('p');
+                blankLine.style.marginBottom = '2em';
+                lyrics.appendChild(blankLine);
+              }
+            }
+
+            const nameLyrics = document.querySelector('.nameLyrics');
+            nameLyrics.innerText = allMusic[index].name;
+            nameLyrics.style.fontFamily = 'Comfortaa, Arial, sans-serif';
+            nameLyrics.style.fontSize = '17px';
+            nameLyrics.style.color = '#919090';
+  
+            // Open the lyrics container
+            lyricsContainer.classList.remove('inactive');
+            lyricsContainer.classList.add('active');
+          })
+          .catch(error => {
+            console.error('Error fetching the lyrics:', error);
+          });
+      });
+  
+      songDetails.appendChild(songItem);
     }
-}
-
-// lets play song on click li 
-function clicked(element){
-
-    // getting li index of particular clicked li tag
-    let getLiIndex = element.getAttribute("li-index");
-    musicIndex =  getLiIndex; //passing that liindex to musicIndex
-    loadMusic(musicIndex);
-    playMusic(); 
-    playingSong();
-   
-}
+  });
+  

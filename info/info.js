@@ -2,7 +2,7 @@ fetch("info.txt")
       .then(response => response.text())
       .then(lyrics => {
         const lines = lyrics.split('\n');
-        const lyricsContainer = document.getElementById('lyrics-container');
+        const lyricsContainer = document.getElementById('main');
   
         // Clear the lyrics container
         lyricsContainer.innerHTML = '';
