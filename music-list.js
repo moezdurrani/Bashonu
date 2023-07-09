@@ -55,5 +55,13 @@ let allMusic = [
         img: "music-6",
         src: "music-6",
         lyricsFile: "dashtu_sehra_asum.txt"
+    },  
+    {
+        name: "Payan Alanio Lowah",
+        writer: "Unknown",
+        singer: "Don't know yet",
+        img: "music-6",
+        src: "music-6",
+        lyricsFile: "lowah.txt"
     },    
     ];
