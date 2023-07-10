@@ -248,8 +248,9 @@ a {
     color: white;
   }
 
-  .blurBackground {
+.blurBackground {
     filter: blur(5px);
     -webkit-filter: blur(5px);
-    pointer-events: none; /* Prevents interaction with the blurred elements */
+    pointer-events: none;
   }
+  
