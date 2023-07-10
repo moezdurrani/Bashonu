@@ -141,7 +141,7 @@ a {
 .lyricsContainer.active {
     /* padding-bottom: 10px; */
     /* height: 550px; */
-    height: 80vh;
+    height: 75vh;
     width: 90%;
     display: block;
     backdrop-filter: blur(100px);
@@ -175,7 +175,7 @@ a {
 
 .lyrics {
     /* max-height: 50px; */
-    height: 75vh;
+    height: 70vh;
     /* max-height: 550px; */
     bottom: 10px;
     overflow: scroll;
