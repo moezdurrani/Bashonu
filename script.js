@@ -71,6 +71,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener("DOMContentLoaded", function() {
     const songDetails = document.querySelector('.main');
+
+    allMusic.sort((a, b) => a.name.localeCompare(b.name));
   
     for (var i = 0; i < allMusic.length; i++) {
       const song = allMusic[i];
