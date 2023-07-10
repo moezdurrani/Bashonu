@@ -11,6 +11,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
+function removeIndexFromURL() {
+  var currentURL = window.location.href;
+  var newURL = currentURL.replace("/index.html", "");
+  history.pushState({}, document.title, newURL);
+}
+
 //Blur the Background and open lyrics Container
 // document.addEventListener("DOMContentLoaded", function() {
 //     var lyricsTrigger = document.getElementById("lyrics");
