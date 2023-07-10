@@ -64,7 +64,7 @@ let allMusic = [
         lang: "english"
     },   
     {
-        name: "Payah Alanio Lowah",
+        name: "Payan Alanio Lowah",
         writer: "Unknown",
         singer: "Unknown",
         img: "music-6",

@@ -30,6 +30,7 @@ img {
 header {
     height: 90px;
     max-width: 800px;
+    min-width: 300px;
     width: 100%;
     top: 0;
     margin-bottom: 10px;
@@ -44,8 +45,11 @@ header {
     z-index: 3;
 }
 
+  
+
 .logo {
     width: 125px;
+    min-width: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,13 +62,53 @@ header img{
 }
 
 .headerIcons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
     position: relative;
     margin: 20px;
     z-index: 2;
+    /* background-color: red; */
 }
+
+.headerIcons .searchBar {
+  /* background-color: blue; */
+  position: relative;
+  top: -15px;
+  right: 5px;
+  
+}
+
+input {
+    color: white;
+}
+  
+
+span input[type="text"] {
+    margin-right: 20px;
+    padding: 5px;
+    padding-left: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 1px;
+    border-bottom: none;
+    background-color: rgba(255, 255, 255, 0.0);
+    border-bottom: solid white 1px;
+    color: white;
+    font-size: 16px;
+    height: 30px;
+    width: 150px;
+  }
+  
+  span input[type="text"]::placeholder {
+    color: #9d9d9d; 
+  }
+  
+  span input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 0 7px rgba(252, 252, 252, 0.9);
+    border-radius: 5px;
+  }
 
 .dropdown-content {
     display: none;
@@ -73,7 +117,6 @@ header img{
     top: 100%;
     right: 0;
     background-color: #22262A;
-    /* background-color: rgba(16, 18, 21, 0.8); */
     padding: 5px;
     border-radius: 5px;
     border: 1px solid rgba(141, 138, 138, 0.3);
@@ -253,4 +296,3 @@ a {
     -webkit-filter: blur(5px);
     pointer-events: none;
   }
-  
