@@ -71,5 +71,14 @@ let allMusic = [
         src: "music-6",
         lyricsFile: "lowah.txt",
         lang: "urdu"
-    },    
+    },  
+    {
+        name: "Xan Sadaqa Ta Cheer Golo Sora",
+        writer: "Unknown",
+        singer: "Unknown",
+        img: "music-6",
+        src: "music-6",
+        lyricsFile: "xan_sadaqa_ta_cheer_golo_sora.txt",
+        lang: "english"
+    },   
     ];

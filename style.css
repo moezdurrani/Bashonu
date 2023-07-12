@@ -180,8 +180,7 @@ a {
   }
   
   
-  
-.lyricsContainer.active {
+  .lyricsContainer.active {
     /* padding-bottom: 10px; */
     /* height: 550px; */
     height: 75vh;
@@ -189,7 +188,15 @@ a {
     display: block;
     backdrop-filter: blur(100px);
   -webkit-backdrop-filter: blur(100px);
+
+    .main {
+        background-color: black;
+        display: none;
+        backdrop-filter: blur(100px);
+    }
 }
+
+
 
 .lyricsContainer.inactive{
     display: none;

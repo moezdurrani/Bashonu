@@ -1,3 +1,4 @@
+//opens the settings Menu
 document.addEventListener("DOMContentLoaded", function() {
   var dropdownTrigger = document.getElementById("dropdown-trigger");
   var dropdownContent = document.querySelector(".dropdown-content");
@@ -7,15 +8,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
+//Removes the file extension
 function removeIndexFromURL() {
   var currentURL = window.location.href;
   var newURL = currentURL.replace("/index.html", "");
   history.pushState({}, document.title, newURL);
 }
 
+
+//blurs and disables the background
 document.addEventListener("DOMContentLoaded", function() {
-  var lyricsTrigger = document.getElementById("lyrics-trigger");
-  var lyricsContainer = document.querySelector(".lyricsContainer");
+  var lyricsTrigger = document.getElementById("lyrics");
+  var lyricsContainer = document.querySelector(".songDetails");
   var mainWrapper = document.querySelector('.main');
 
   lyricsTrigger.addEventListener("click", function() {
@@ -25,6 +29,8 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+
+//close the lyrics when close button is pressed
 document.addEventListener("DOMContentLoaded", function() {
   var closeLyrics = document.getElementById("close-lyrics");
   var lyricsContainer = document.querySelector(".lyricsContainer");
@@ -37,8 +43,14 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+
+//shows lyrics and songs
 document.addEventListener("DOMContentLoaded", function() {
   const songDetails = document.querySelector('.main');
+
+  songDetails.classList.add('songDetails');
+songDetails.setAttribute('id', 'songDetails');
+
   const searchInput = document.getElementById('searchInput');
 
   allMusic.sort((a, b) => a.name.localeCompare(b.name));
