@@ -80,5 +80,23 @@ let allMusic = [
         src: "music-6",
         lyricsFile: "xan_sadaqa_ta_cheer_golo_sora.txt",
         lang: "english"
-    },   
+    },  
+    {
+        name: "Hase Wa Kya Zindagi Sukoon E Darbat Ki No Hoi",
+        writer: "Unknown",
+        singer: "Unknown",
+        img: "music-6",
+        src: "music-6",
+        lyricsFile: "hase_wa_kya_zindagi.txt",
+        lang: "english"
+    },  
+    {
+        name: "Bas E Kashkol Bas E Xindaan",
+        writer: "Faizan Ali Faizan",
+        singer: "Unknown",
+        img: "music-6",
+        src: "music-6",
+        lyricsFile: "bas_e_kashkol_bas_e_xindaan.txt",
+        lang: "english"
+    }, 
     ];
