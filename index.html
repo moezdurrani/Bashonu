@@ -24,35 +24,32 @@
             <img src="images/bashonu2.png" alt="" >
         <a>
 
+            <div class="headerIcons">
 
-        <div class="headerIcons">
+                <span class="searchBar"><input type="text" id="searchInput" placeholder="Search songs..."></span>
 
+                <div class="dropdown-trigger">
 
-            <span class="searchBar"><input type="text" id="searchInput" placeholder="Search songs..."></span>
+                    <span id="listIcon" class="material-icons-outlined">format_list_bulleted</span>
+                    
+                    <div class="dropdown-content">
+                        <div class="settings" onclick="window.open('https://forms.gle/S4PjJm2cEhA5zXCW6', '_blank')">
+                            <span class="material-icons-outlined">add</span>
+                            <span class="iconText">Add Song</span>
+                        </div>
+                        <div class="settings" onclick="window.open('https://forms.gle/exhLZPiT5nVPAHtBA', '_blank')">
+                            <span class="material-icons-outlined">feedback</span>
+                            <span class="iconText">Feedback</span>
+                        </div>
+                        <a href="info/info.html" class="settings">
+                            <span class="material-icons-outlined">info</span>
+                            <span class="iconText">Info</span>
+                        </a>
+                    </div>
 
-    
-
-            <span class="material-icons-outlined" id="dropdown-trigger">
-                format_list_bulleted
-            </span>
-
-            <div class="dropdown-content">
-
-                <div class="settings">
-                    <span class="material-icons-outlined" onclick="window.open('https://forms.gle/S4PjJm2cEhA5zXCW6', '_blank')">add</span>
-                    <span class="iconText">Add Song</span>
                 </div>
-                <div class="settings">
-                    <span class="material-icons-outlined" onclick="window.open('https://forms.gle/exhLZPiT5nVPAHtBA', '_blank')">feedback</span>
-                    <span class="iconText">Feedback</span> 
-                </div>
-                <a href="info/info.html" class="settings">
-                    <span class="material-icons-outlined">info</span>
-                    <span class="iconText">Info</span> 
-                </a>
             </div>
-
-        </div>
+            
         
     </header>
 
@@ -65,6 +62,11 @@
                     arrow_back
                 </span>
 
+                <div class="languageSelector">
+                    <button id="englishBtn">English</button>
+                    <button id="urduBtn">Urdu</button>
+                </div>
+                  
                 <div class="lyricsInfo">
                     <p class="nameLyrics" id="nameLyrics">Song Name</p>
                 </div>

@@ -8,189 +8,150 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-//Removes the file extension
-function removeIndexFromURL() {
-  var currentURL = window.location.href;
-  var newURL = currentURL.replace("/index.html", "");
-  history.pushState({}, document.title, newURL);
-}
-
-
-//blurs and disables the background
 document.addEventListener("DOMContentLoaded", function() {
-  var lyricsTrigger = document.getElementById("lyrics");
-  var lyricsContainer = document.querySelector(".songDetails");
-  var mainWrapper = document.querySelector('.main');
-
-  lyricsTrigger.addEventListener("click", function() {
-    lyricsContainer.classList.remove("inactive");
-    lyricsContainer.classList.toggle("active");
-    mainWrapper.classList.toggle('blurBackground');
-  });
-});
-
-
-//close the lyrics when close button is pressed
-document.addEventListener("DOMContentLoaded", function() {
-  var closeLyrics = document.getElementById("close-lyrics");
-  var lyricsContainer = document.querySelector(".lyricsContainer");
-  var mainWrapper = document.querySelector('.main');
-
-  closeLyrics.addEventListener("click", function() {
-    lyricsContainer.classList.toggle("inactive");
-    lyricsContainer.classList.remove("active");
-    mainWrapper.classList.remove('blurBackground');
-  });
-});
-
-
-//shows lyrics and songs
-document.addEventListener("DOMContentLoaded", function() {
-  const songDetails = document.querySelector('.main');
-
-  songDetails.classList.add('songDetails');
-songDetails.setAttribute('id', 'songDetails');
-
   const searchInput = document.getElementById('searchInput');
+  const songDetails = document.querySelector('.main');
+  const lyricsContainer = document.querySelector('.lyricsContainer');
+  const lyricsDisplay = document.getElementById('lyrics');
+  const closeLyricsButton = document.getElementById("close-lyrics");
+  const englishBtn = document.getElementById("englishBtn");
+  const urduBtn = document.getElementById("urduBtn");
 
-  allMusic.sort((a, b) => a.name.localeCompare(b.name));
+  let currentLanguage = 'English'; // Default language
 
-  function displaySongs() {
-    songDetails.innerHTML = '';
+  englishBtn.addEventListener('click', () => setLanguage('English'));
+  urduBtn.addEventListener('click', () => setLanguage('Urdu'));
 
-    const searchTerm = searchInput.value.toLowerCase();
-
-    for (var i = 0; i < allMusic.length; i++) {
-      const song = allMusic[i];
-
-      if (song.name.toLowerCase().includes(searchTerm) ||
-      song.writer.toLowerCase().includes(searchTerm) ||
-      song.singer.toLowerCase().includes(searchTerm)) {
-        
-        const songItem = document.createElement('div');
-        songItem.classList.add('song');
-        songItem.style.background = 'linear-gradient(180deg, #22262A 0%, #181A1D 100%)';
-        songItem.style.border = '1px solid rgba(255, 255, 255, 0.05)';
-        songItem.style.borderRadius = '10px';
-        songItem.style.padding = '10px';
-        songItem.style.marginBottom = '10px';
-        songItem.setAttribute('data-index', i); // Store the index of the song
-
-        const songName = document.createElement('div');
-        songName.classList.add('songName');
-        const name = document.createElement('p');
-        name.classList.add('name');
-        name.style.fontWeight = 'bold';
-        name.innerText = song.name;
-        name.style.fontFamily = 'M PLUS Rounded 1c, optima, sans-serif, Arial';
-        name.style.fontSize = '18px';
-        songName.appendChild(name);
-
-        const songInfo = document.createElement('div');
-        songInfo.classList.add('songInfo');
-
-        const writerText = document.createElement('span');
-        writerText.innerText = 'Writer: ';
-        writerText.style.fontWeight = 'bold';
-        writerText.style.color = '#888';
-        writerText.style.fontFamily = 'Arial, sans-serif';
-        writerText.style.fontSize = '15px';
-        songInfo.appendChild(writerText);
-
-        const writer = document.createElement('p');
-        writer.classList.add('writer');
-        writer.style.color = '#888';
-        writer.innerText = song.writer;
-        writerText.style.marginRight = '0.5em';
-        writer.style.fontFamily = 'Arial, sans-serif';
-        writer.style.fontSize = '16px';
-        songInfo.appendChild(writer);
-
-        const separator = document.createElement('p');
-        separator.innerText = ' | ';
-        separator.style.color = '#888';
-        separator.style.fontWeight = 'bold';
-        songInfo.appendChild(separator);
-
-        const singerText = document.createElement('span');
-        singerText.innerText = 'Singer: ';
-        singerText.style.fontWeight = 'bold';
-        singerText.style.color = '#888';
-        singerText.style.marginRight = '0.5em';
-        singerText.style.fontFamily = 'Arial, sans-serif';
-        singerText.style.fontSize = '15px';
-        songInfo.appendChild(singerText);
-
-        const singer = document.createElement('p');
-        singer.classList.add('singer');
-        singer.style.color = '#888';
-        singer.innerText = song.singer;
-        singer.style.fontFamily = 'Arial, sans-serif';
-        singer.style.fontSize = '16px';
-        songInfo.appendChild(singer);
-
-        songItem.appendChild(songName);
-        songItem.appendChild(songInfo);
-
-        // Add click event listener to each song item
-        songItem.addEventListener('click', function() {
-          const lyricsContainer = document.querySelector('.lyricsContainer');
-          const lyrics = document.getElementById('lyrics');
-          const index = this.getAttribute('data-index'); // Get the index of the clicked song
-
-          // Fetch and display lyrics for the selected song
-          fetch(`lyrics/${allMusic[index].lyricsFile}`)
-            .then(response => response.text())
-            .then(lyricsText => {
-              const lines = lyricsText.split('\n');
-              lyrics.innerHTML = '';
-
-              for (let i = 0; i < lines.length; i++) {
-                const line = lines[i].trim();
-
-                if (line !== '') {
-                  const paragraph = document.createElement('p');
-                  paragraph.textContent = line;
-                  paragraph.style.color = 'white';
-                  paragraph.style.lineHeight = '2.5';
-
-                  if (song.lang === 'english') {
-                    paragraph.style.fontFamily = "'Comfortaa', cursive, sans-serif";
-                    paragraph.style.fontSize = '13px';
-                    paragraph.style.lineHeight = '2.3';
-                  } else if (song.lang === 'urdu') {
-                    paragraph.style.lineHeight = '2.5';
-                    paragraph.style.fontFamily = "'Noto Nastaliq Urdu', serif, Arial, sans-serif";
-                  }
-
-                  lyrics.appendChild(paragraph);
-                } else if (i > 0 && lines[i - 1].trim() !== '') {
-                  const blankLine = document.createElement('p');
-                  blankLine.style.marginBottom = '2em';
-                  lyrics.appendChild(blankLine);
-                }
-              }
-
-              const nameLyrics = document.querySelector('.nameLyrics');
-              nameLyrics.innerText = allMusic[index].name;
-              nameLyrics.style.fontFamily = 'Comfortaa, Arial, sans-serif';
-              nameLyrics.style.fontSize = '17px';
-              nameLyrics.style.color = '#919090';
-
-              // Open the lyrics container
-              lyricsContainer.classList.remove('inactive');
-              lyricsContainer.classList.add('active');
-            })
-            .catch(error => {
-              console.error('Error fetching the lyrics:', error);
-            });
-        });
-
-        songDetails.appendChild(songItem);
-      }
+  function setLanguage(language) {
+    currentLanguage = language;
+    if (currentLyrics && currentLyrics.length > 0) {
+        displayLyrics(currentLyrics); // Redisplay the lyrics in the selected language
     }
   }
 
-  searchInput.addEventListener('input', displaySongs);
+  function displaySongs() {
+    songDetails.innerHTML = '';
+    const searchTerm = searchInput.value.toLowerCase();
+
+    // Sort the music by song name before filtering and displaying
+    allMusic.sort((a, b) => a.name.localeCompare(b.name));
+
+    allMusic.forEach((song) => {
+      if (song.name.toLowerCase().includes(searchTerm) ||
+          song.writer.toLowerCase().includes(searchTerm) ||
+          song.singer.toLowerCase().includes(searchTerm)) {
+        createSongItem(song);
+      }
+    });
+  }
+
+  function createSongItem(song) {
+    const songItem = document.createElement('div');
+    songItem.className = 'song';
+    songItem.style.background = 'rgba(10, 10, 10, 0.15)';
+    songItem.style.border = '1px solid rgba(255, 255, 255, 0.05)';
+    songItem.style.borderRadius = '10px';
+    songItem.style.padding = '10px';
+    songItem.style.backdropFilter = 'blur(20px)';
+    songItem.style.boxShadow = '-6px 6px 6px rgba(10, 10, 10, 0.55)'
+    songItem.style.marginBottom = '10px';
+
+    const songName = document.createElement('p');
+    songName.textContent = song.name;
+    songName.className = 'name';
+    songName.style.fontWeight = 'bold';
+    songName.innerText = song.name;
+    songName.style.fontFamily = 'M PLUS Rounded 1c, optima, sans-serif, Arial';
+    songName.style.fontSize = '18px';
+    songName.style.paddingBottom = '7px';
+
+    const details = document.createElement('p');
+    details.textContent = `Writer: ${song.writer} | Singer: ${song.singer}`;
+    details.className = 'details';
+    details.style.color = '#888';
+    details.style.marginRight = '0.5em';
+    details.style.fontFamily = 'Arial, sans-serif';
+    details.style.fontSize = '16px';
+    details.style.paddingBottom = '7px';
+
+    songItem.appendChild(songName);
+    songItem.appendChild(details);
+    songItem.addEventListener('click', () => {
+      fetchAndDisplayLyrics(song.lyricsFile);
+    });
+    songDetails.appendChild(songItem);
+  }
+
+  function fetchAndDisplayLyrics(lyricsFile) {
+    fetch(`lyrics/${lyricsFile}`)
+      .then(response => response.text())
+      .then(lyricsText => {
+        currentLyrics = lyricsText.split('\n');
+        displayLyrics(currentLyrics);
+      })
+      .catch(error => console.error('Error fetching the lyrics:', error));
+  }
+
+  function displayLyrics(lines) {
+    lyricsDisplay.innerHTML = '';  // Clear the previous lyrics
+    const nameLyrics = document.querySelector('.nameLyrics');
+    nameLyrics.textContent = lines[0]; // Display the song name
+
+    const urduIndex = lines.findIndex(line => line.trim() === "URDUONWARDS");
+    let lyricsStartIndex = 4; 
+    let lyricsEndIndex = urduIndex - 1; 
+    if (currentLanguage === 'Urdu') {
+        lyricsStartIndex = urduIndex + 1; 
+        lyricsEndIndex = lines.length; 
+    }
+
+    // Display only the selected language lyrics
+    for (let i = lyricsStartIndex; i < lyricsEndIndex; i++) {
+        const lyricLine = document.createElement('p');
+        if (lines[i].trim() === '') {
+            // Check if the line is empty and ensure it renders as an empty space
+            lyricLine.innerHTML = '&nbsp;'; // Use non-breaking space to ensure empty lines are visible
+            lyricLine.style.height = '2em'; // Maintain line height for empty lines
+        } else {
+            lyricLine.textContent = lines[i];
+        }
+
+        // Apply font styles based on language
+        applyFontStyles(lyricLine, i < urduIndex);
+        lyricsDisplay.appendChild(lyricLine);
+    }
+
+    lyricsContainer.classList.add("active");
+}
+
+function applyFontStyles(lyricLine, isEnglish) {
+    if (isEnglish) {
+        lyricLine.style.fontFamily = "'Comfortaa', cursive, sans-serif";
+        lyricLine.style.fontSize = '13px';
+        lyricLine.style.lineHeight = '2.3';
+    } else {
+        lyricLine.style.fontFamily = "'Noto Nastaliq Urdu', serif, Arial, sans-serif";
+        lyricLine.style.lineHeight = '2.3';
+    }
+}
+
+  englishBtn.addEventListener('click', () => setLanguage('English'));
+  urduBtn.addEventListener('click', () => setLanguage('Urdu'));
+
+  closeLyricsButton.addEventListener("click", function() {
+    lyricsContainer.classList.remove("active");
+  });
+
+  searchInput.addEventListener('input', function() {
+    displaySongs();
+  });
+
   displaySongs(); // Initially display all songs
 });
+
+
+
+
+
+
+

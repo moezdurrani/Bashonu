@@ -11,10 +11,19 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* background-color: #27272f; */
-    background: radial-gradient(circle, #6f6f6f 0%, #4a4a4a 50%, #1c1c1c 80%);
+    /* background: radial-gradient(circle, #6f6f6f 0%, #4a4a4a 50%, #1c1c1c 80%); */
+    background: black;
     min-width: 250px;
     font-family: 'M PLUS Rounded 1c', sans-serif;
+
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background: linear-gradient(110.6deg, rgb(98, 72, 80) -18.3%, rgb(67, 54, 74) 16.4%, rgb(47, 48, 67) 68.2%, rgb(27, 23, 36) 99.1%);
+    /* filter: blur(0px);
+    -webkit-filter: blur(0px); */
 }
 
 body::-webkit-scrollbar {
@@ -35,17 +44,19 @@ header {
     top: 0;
     margin-bottom: 10px;
     position: fixed;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: -6px 6px 6px rgba(10, 10, 10, 0.75);
     display: flex;
     justify-content: space-between;
     border: 1px solid rgba(255, 255, 255, 0.13);
-    background: linear-gradient(180deg, #22262A 0%, #181A1D 100%);
-    /* background-color: rgba(17, 25, 40, 0.2); */
+    /* background: linear-gradient(180deg, #22262A 0%, #181A1D 100%); */
+    background: linear-gradient(110.6deg, rgb(98, 72, 80) -18.3%, rgb(67, 54, 74) 16.4%, rgb(47, 48, 67) 68.2%, rgb(27, 23, 36) 99.1%);
     z-index: 3;
 }
 
-  
+
+
 
 .logo {
     width: 125px;
@@ -58,7 +69,7 @@ header {
 
 header img{
     width: 100%;
-    filter: brightness(0) invert(1);
+
 }
 
 .headerIcons {
@@ -111,57 +122,111 @@ span input[type="text"] {
     border-radius: 5px;
   }
 
+.dropdown-trigger {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+
 .dropdown-content {
+    font-family:'Comfortaa', cursive, 'sans-serif';
     display: none;
     position: absolute;
-    width: 110px;
     top: 100%;
     right: 0;
-    background-color: #22262A;
+    background: linear-gradient(110.6deg, rgb(98, 72, 80) -18.3%, rgb(67, 54, 74) 16.4%, rgb(47, 48, 67) 68.2%, rgb(27, 23, 36) 99.1%);
+    box-shadow: -6px 6px 6px rgba(10, 10, 10, 0.75);
     padding: 5px;
+    padding-right: 15px;
     border-radius: 5px;
     border: 1px solid rgba(141, 138, 138, 0.3);
     z-index: 999;
-    align-items: left;
+    flex-direction: column;
+    align-items: flex-start;
 }
+
+.dropdown-trigger:hover .dropdown-content {
+    display: flex;
+}
+
+.settings {
+    display: flex;
+    justify-content: space-between; /* Space betwexen icon and text */
+    align-items: center; /* Center items vertically */
+    width: 100%;
+    padding: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Apply transition to background and text color */
+}
+
+.settings .iconText{
+    padding-right: 5px;
+}
+
+
+.settings:hover .iconText,
+.settings:hover .material-icons-outlined {
+    /* color: #12e45f;  */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+#listIcon {
+    color: rgb(255, 255, 255);
+    transition: color 0.3s ease;
+    border-radius: 7px;
+    padding: 2.5px;
+    background: linear-gradient(110.6deg, rgb(98, 72, 80) -18.3%, rgb(67, 54, 74) 16.4%, rgb(47, 48, 67) 68.2%, rgb(27, 23, 36) 99.1%);
+    box-shadow: 4px 4px 4px -0.5px rgba(19, 13, 19, 0.9), -5px -5px 5px -2px rgba(77, 63, 84, 0.9);
+}
+
+/* Targeting the settings icon specifically */
+#listIcon:hover {
+    transition: color 0.3s ease; /* Smooth transition for the color change */
+    color: white;
+    box-shadow: inset 4px 4px 4px -0.5px rgba(19, 13, 19, 0.9), inset -5px -5px 5px -2px rgba(77, 63, 84, 0.9);
+}
+
+.settings {
+    display: flex;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background: linear-gradient(110.6deg, rgb(53, 38, 42) -18.3%, rgb(67, 54, 74) 16.4%, rgb(47, 48, 67) 68.2%, rgb(27, 23, 36) 99.1%);
+    box-shadow: 4px 4px 4px -0.5px rgba(42, 29, 42, 0.9), -5px -5px 5px -2px rgba(38, 31, 42, 0.9);
+}
+
+.settings:hover {
+    box-shadow: inset 6px 6px 6px -0.7px rgba(19, 13, 19, 0.9), inset -7px -7px 7px -4px rgba(77, 63, 84, 0.9);
+}
+
+
+.material-icons-outlined {
+    font-size: 20px; /* Adjust icon size if needed */
+    color: white; /* Default icon color */
+}
+
+.iconText {
+    margin-left: 5px; /* Spacing after the icon for better alignment */
+    font-size: 14px; /* Adjust text size for better visibility */
+}
+
+
 
 a {
     text-decoration: none;
   }
-
-  
-.settings {
-    display: flex;
-    align-items: center;
-}
-
-.dropdown-content.active {
-    display: flex;
-    flex-direction: column;
-    /* align-items: flex-end; */
-    align-items: left;
-}
-
-.iconText {
-    font-family: sans-serif;
-    font-size: 13px;
-}
-
-.dropdown-content span {
-    margin-bottom: 15px;
-    margin-right: 3px;
-    margin-left: 3px;
-}
 
 .mainWrapper {
     max-width: 800px;
     width: 100%;
     margin-top: 90px;
     top: 50px;
+    /* filter: blur(0px);
+    -webkit-filter: blur(0px); */
+    /* background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(225px);  */
 }
 
   .lyricsContainer {
-    /* min-width: 250px; */
     max-width: 750px;
     width: 95%;
     display: none;
@@ -170,30 +235,31 @@ a {
     right: 50%;
     margin-top: 90px;
     top: 10px;
-    /* background: linear-gradient(to right, #080808, #272727); */
-     background: linear-gradient(radial-gradient, #131313 0%, #181818 50%, #131313 100%);
-    /* background: linear-gradient(180deg, #1b1b1b 0%, #2f2f2f 50%, #1f1f1f 100%); */
+    border-radius: 10px;
     padding: 20px;
     border: 1px solid black;
     z-index: 4; 
     transform: translate(-50%, 0%);
-    border-radius: 10px;
+    background: rgba(53, 6, 60, 0.1);
+    backdrop-filter: blur(100px); 
+    /* -webkit-filter: blur(8px);
+    pointer-events: none; */
   }
-  
+ 
   
   .lyricsContainer.active {
-    /* padding-bottom: 10px; */
-    /* height: 550px; */
     height: 75vh;
     width: 90%;
     display: block;
-    backdrop-filter: blur(100px);
-  -webkit-backdrop-filter: blur(100px);
+    background: rgba(53, 6, 60, 0.1);
+    backdrop-filter: blur(400px);
+  /* -webkit-backdrop-filter: blur(1000px); */
 
     .main {
         background-color: black;
         display: none;
         backdrop-filter: blur(100px);
+        pointer-events: none;
     }
 }
 
@@ -207,14 +273,17 @@ a {
 .lyricsHeader {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0px;
+    width: 100%;
 }
 
 .lyricsHeader .material-icons-outlined {
     font-size: 40px !important;
     margin: 0;
     padding: 0;
-    margin-top: -10px;
+    cursor: pointer;
+    /* margin-top: -10px; */
   }
 
 .lyricsContainer hr{
@@ -250,7 +319,6 @@ a {
 
 .lyricsInfo {
     display: flex;
-    
 }
 
 .lyricsInfo p{
@@ -304,3 +372,51 @@ a {
     -webkit-filter: blur(5px);
     pointer-events: none;
   }
+
+/* General Styles for the Language Selector */
+.languageSelector {
+    display: flex;
+    justify-content: center;
+    margin-top: 0 10px;
+}
+
+#close-lyrics.material-icons-outlined {
+    color: white;  /* Default color */
+    transition: color 0.3s ease;  /* Smooth transition for color change */
+    border-radius: 7px;
+    background: linear-gradient(110.6deg, rgb(98, 72, 80) -18.3%, rgb(67, 54, 74) 16.4%, rgb(47, 48, 67) 68.2%, rgb(27, 23, 36) 99.1%);
+    box-shadow: 4px 4px 4px -0.5px rgba(19, 13, 19, 0.9), -5px -5px 5px -2px rgba(77, 63, 84, 0.9);
+}
+
+#close-lyrics.material-icons-outlined:hover {
+    box-shadow: inset 6px 6px 6px -0.7px rgba(19, 13, 19, 0.9), inset -7px -7px 7px -4px rgba(77, 63, 84, 0.9);
+}
+
+/* Styling for Individual Language Buttons */
+.languageSelector button {
+    padding: 8px 20px;
+    margin: 0 10px;
+    color: white; /* White Text */
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-family:'Comfortaa', cursive, 'sans-serif';
+    transition: background-color 0.3s, transform 0.2s;
+    outline: none;
+    background: linear-gradient(110.6deg, rgb(98, 72, 80) -18.3%, rgb(67, 54, 74) 16.4%, rgb(47, 48, 67) 68.2%, rgb(27, 23, 36) 99.1%);
+    box-shadow: 4px 4px 4px -0.5px rgba(19, 13, 19, 0.9), -5px -5px 5px -2px rgba(77, 63, 84, 0.9);
+}
+
+/* Hover Effect for Buttons */
+.languageSelector button:hover {
+    transform: scale(1.05); /* Slight Increase in Size */
+    background: linear-gradient(110.6deg, rgb(98, 72, 80) -18.3%, rgb(67, 54, 74) 16.4%, rgb(47, 48, 67) 68.2%, rgb(27, 23, 36) 99.1%);
+}
+
+/* Focus Style for Buttons */
+.languageSelector button:focus {
+    outline: none; /* Removes the outline */
+    ackground: linear-gradient(110.6deg, rgb(98, 72, 80) -18.3%, rgb(67, 54, 74) 16.4%, rgb(47, 48, 67) 68.2%, rgb(27, 23, 36) 99.1%);
+    box-shadow: inset 7px 7px 7px -0.7px rgba(23, 16, 23, 0.9), inset -5px -5px 5px -0.4px rgba(67, 55, 74, 0.9);
+}
