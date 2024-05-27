@@ -240,10 +240,7 @@ a {
     border: 1px solid black;
     z-index: 4; 
     transform: translate(-50%, 0%);
-    background: rgba(53, 6, 60, 0.1);
-    backdrop-filter: blur(100px); 
-    /* -webkit-filter: blur(8px);
-    pointer-events: none; */
+    /* background: rgba(53, 6, 60, 0.1); */
   }
  
   
@@ -252,15 +249,16 @@ a {
     width: 90%;
     display: block;
     background: rgba(53, 6, 60, 0.1);
-    backdrop-filter: blur(400px);
+    background: linear-gradient(110.6deg, rgb(54, 40, 44) -18.3%, rgb(67, 54, 74) 16.4%, rgb(47, 48, 67) 68.2%, rgb(27, 23, 36) 99.1%);
+    /* backdrop-filter: blur(400px); */
   /* -webkit-backdrop-filter: blur(1000px); */
 
-    .main {
+    /* .main {
         background-color: black;
         display: none;
         backdrop-filter: blur(100px);
         pointer-events: none;
-    }
+    } */
 }
 
 

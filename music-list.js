@@ -109,12 +109,6 @@ let allMusic = [
         lyricsFile: "girwanoENas.txt",
     }, 
     {
-        name: "Girwano E Nas",
-        writer: "Unknown",
-        singer: "Unknown",
-        lyricsFile: "girwanoENas.txt",
-    }, 
-    {
         name: "Ghoru (Nane Nane Afhera Ka Goyan)",
         writer: "Unknown",
         singer: "Unknown",
