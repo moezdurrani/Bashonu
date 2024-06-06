@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<div style="align-items: center; background: rgb(255, 255, 255); border: 1px solid #aeaeae; border-radius: 2px; color: rgb(255, 255, 255); display: flex; flex-direction: column; justify-content: center; margin: 20px auto; width: 100%; padding: 2px; position: relative; box-sizing: border-box;">
+    <audio id="myAudio" style="display: none;">
+        <source src="https://bashonu.s3.us-east-2.amazonaws.com/songs/Zhan+Sadaqae+Ta+Cheer+Golo+Sura+Muhsin+Hayat+Shadab.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+    <div style="display: flex; align-items: center; width: 100%; gap: 2px; box-sizing: border-box;">
+        <button id="playPauseBtn" onclick="togglePlayPause()" style="border: none; background-color: rgb(221, 221, 221); color: rgb(129, 129, 129); width: 40px; height: 40px; border-radius: 2px; cursor: pointer; flex-shrink: 0; box-sizing: border-box; display: flex; align-items: center; justify-content: center;">
+            <i id="playPauseIcon" class="fas fa-play" style="font-size: 25px;"></i>
+        </button>
+        
+        <div style="width: 1px; height: 40px; background-color: rgba(106, 106, 106,0.5);"></div> <!-- Line Separator -->
+        
+        <div style="background: rgb(221, 221, 221); border-radius: 2px; overflow: hidden; position: relative; flex-grow: 1; height: 40px; cursor: pointer; box-sizing: border-box;" onclick="seekAudio(event)">
+            <div id="progressBar" style="background: rgb(156, 156, 156); height: 100%; width: 0%; box-sizing: border-box;"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var audio = document.getElementById('myAudio');
+    var progressBar = document.getElementById('progressBar');
+    var playPauseIcon = document.getElementById('playPauseIcon');
+
+    function togglePlayPause() {
+        if (audio.paused || audio.ended) {
+            audio.play();
+            playPauseIcon.className = 'fas fa-pause';
+        } else {
+            audio.pause();
+            playPauseIcon.className = 'fas fa-play';
+        }
+    }
+
+    audio.ontimeupdate = function() {
+        var percentage = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = percentage + '%';
+    };
+
+    function seekAudio(event) {
+        var rect = event.currentTarget.getBoundingClientRect();
+        var x = event.clientX - rect.left; // correct calculation for the click position
+        var percent = x / rect.width;
+        audio.currentTime = percent * audio.duration;
+        progressBar.style.width = percent * 100 + '%';
+        console.log('Click position: %d, Percent: %f', x, percent); // Debugging information
+    }
+</script>

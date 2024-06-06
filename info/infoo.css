@@ -11,9 +11,9 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(110.6deg, rgb(98, 72, 80) -18.3%, rgb(67, 54, 74) 16.4%, rgb(47, 48, 67) 68.2%, rgb(27, 23, 36) 99.1%);
     min-width: 250px;
     font-family: 'M PLUS Rounded 1c', sans-serif;
+    background: white;
 }
 
 body::-webkit-scrollbar {
@@ -27,7 +27,6 @@ img {
 
 header {
     height: 90px;
-    max-width: 800px;
     min-width: 300px;
     width: 100%;
     top: 0;
@@ -35,16 +34,17 @@ header {
     position: fixed;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    box-shadow: -6px 6px 6px rgba(10, 10, 10, 0.75);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border: 1px solid rgba(255, 255, 255, 0.13);
-    background: linear-gradient(110.6deg, rgb(98, 72, 80) -18.3%, rgb(67, 54, 74) 16.4%, rgb(47, 48, 67) 68.2%, rgb(27, 23, 36) 99.1%);
+    background: white;
     z-index: 3;
 }
 
 .logo {
-    width: 125px;
+    width: 250px;
+    min-width: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,7 +53,6 @@ header {
 
 header img{
     width: 100%;
-    filter: brightness(0) invert(1);
 }
 
 a {
@@ -62,9 +61,11 @@ a {
 
 
 .mainWrapper {
-    max-width: 800px;
-    width: 100%;
+    max-width: 1200px;
+    /* width: 100%; */
     margin-top: 100px;
+    margin-right: 10px;
+    margin-left: 10px;
     top: 50px;
     display: flex;
     align-items: center;
@@ -75,11 +76,13 @@ a {
     max-height: calc(100vh - 100px);
     margin-top: 5px;
     padding: 20px;
-    height: 550px;
     margin: 5px;
+    /* margin-right: 10px; */
     border-radius: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.13);
-    box-shadow: -6px 6px 6px rgba(10, 10, 10, 0.75);
+}
+
+.main p{
+    color: black;
 }
 
 .main::-webkit-scrollbar {
@@ -93,6 +96,42 @@ a {
     color: white;
 }
 
+.title {
+    color: rgb(191, 148, 138);
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 45px;
+    margin-bottom: 30px;
+}
+
+.main p {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 2;
+}
+
+
+.subtitle {
+    color: black;
+    font-style: normal;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.main .email-link {
+    color: rgb(191, 148, 138);
+    text-decoration: underline; 
+    font-weight: bold; 
+    font-size: 20px;
+}
+
+.main .email-link:hover {
+    color: rgb(209, 162, 151);
+    text-decoration: none;
+}
 
 
 
