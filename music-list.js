@@ -168,4 +168,11 @@ let allMusic = [
         lyricsFile: "awaNoBom.txt",
         src: "https://bashonu.s3.us-east-2.amazonaws.com/songs/awa+No+Bom.mp3",
     }, 
+    {
+        name: "Thak Gaya Hoon",
+        writer: "Irfan Ali Taj",
+        singer: "Irfan Ali Taj",
+        lyricsFile: "thakGayaHoon.txt",
+        src: "https://bashonu.s3.us-east-2.amazonaws.com/songs/Thak+Gaya+Hoon+-+Irfan+Ali+Taj+x+Varqa+Faraid+(Official+Music+Video).mp3",
+    }, 
     ];
