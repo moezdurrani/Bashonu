@@ -177,12 +177,12 @@ document.addEventListener("DOMContentLoaded", function() {
   function applyFontStyles(lyricLine, isEnglish) {
     if (isEnglish) {
       lyricLine.style.fontFamily = "'Comfortaa', cursive, sans-serif";
-      lyricLine.style.fontSize = '11px';
+      lyricLine.style.fontSize = '15px';
       lyricLine.style.lineHeight = '2.3';
       lyricLine.style.color = 'black';
     } else {
       lyricLine.style.fontFamily = "'Noto Nastaliq Urdu', serif, Arial, sans-serif";
-      lyricLine.style.fontSize = '13px';
+      lyricLine.style.fontSize = '15px';
       lyricLine.style.fontWeight = '400';
       lyricLine.style.lineHeight = '2.3';
       lyricLine.style.color = 'black';

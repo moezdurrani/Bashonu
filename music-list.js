@@ -175,4 +175,26 @@ let allMusic = [
         lyricsFile: "thakGayaHoon.txt",
         src: "https://bashonu.s3.us-east-2.amazonaws.com/songs/Thak+Gaya+Hoon+-+Irfan+Ali+Taj+x+Varqa+Faraid+(Official+Music+Video).mp3",
     }, 
+    {
+        name: "Kamalo Jawab",
+        writer: "Faizan Ali Faizan",
+        singer: "Qashqarian Band",
+        lyricsFile: "kamaloJawab.txt",
+        src: "https://bashonu.s3.us-east-2.amazonaws.com/songs/kamaloJawab.mp3",
+    }, 
+    {
+        name: "Egan Egana",
+        writer: "Unknown",
+        singer: "Qashqarian Band",
+        lyricsFile: "eganEgana.txt",
+        src: "https://bashonu.s3.us-east-2.amazonaws.com/songs/eganegana.mp3",
+    }, 
+    {
+        name: "Egan Egana",
+        writer: "Unknown",
+        singer: "Muhsin hayat Shadab",
+        lyricsFile: "eganEganaMuhsin.txt",
+        src: "https://bashonu.s3.us-east-2.amazonaws.com/songs/eganeganaMuhsinHayat.mp3",
+    }, 
+    
     ];
