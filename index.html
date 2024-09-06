@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-     <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XNT2C2XRQ6"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -13,17 +14,16 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description" content="Explore Bashonu.com to discover and preserve the rich musical heritage of the Chitrali people. Access traditional Chitrali and Khowar songs, lyrics, and contribute to our growing collection of cultural treasures." />
-    <meta name="keywords" content="Chitrali music, Chitrali songs, traditional Chitrali songs, Chitral, Latest Chitrali Songs, Chitrali culture, Chitrali heritage, Chitrali lyrics, Chitrali history, Khowar songs, Latest Khowar songs, khowar music, ishtok, Chitrali ishtok, Khowar Ishtok, music preservation, Bashonu, gaana, Pakistan music, Music of the North, cultural heritage" />
-    <meta property="og:title" content="Bashonu - Preserve Chitrali Music Heritage" />
-    <meta property="og:description" content="Join Bashonu.com to explore and contribute to the preservation of Chitrali musical heritage. Access traditional Khowar songs and lyrics." />
-    <!-- <meta property="og:image" content="http://bashonu.com/images/chitrali-music.jpg" /> -->
+    
+    <!-- SEO Tags -->
+    <meta name="description" content="Discover Chitrali songs, traditional Khowar music, and cultural heritage on Bashonu. Listen to the latest Chitrali songs and access song lyrics. Explore and contribute to preserving Chitrali musical traditions." />
+    <meta name="keywords" content="Chitrali songs, traditional Chitrali music, Khowar songs, Chitrali lyrics, Chitral, Khowar music, Chitrali heritage, Chitrali culture, latest Chitrali songs, traditional Khowar songs" />
+    <meta property="og:title" content="Chitrali Songs | Traditional Khowar Music | Bashonu" />
+    <meta property="og:description" content="Discover traditional Chitrali songs and Khowar music. Explore Chitral's rich cultural heritage through music." />
     <meta property="og:url" content="http://bashonu.com" />
     <meta property="og:type" content="website" />
-
-    <title>Bashonu - Chitrali Songs</title>
-
+    
+    <title>Chitrali Songs | Traditional Khowar Music | Bashonu</title>
 
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
@@ -32,13 +32,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MusicAlbum",
+      "name": "Traditional and Latest Chitrali Songs",
+      "url": "https://bashonu.com",
+      "description": "Discover traditional Chitrali songs and Khowar music. Listen to the latest Chitrali songs and explore the rich cultural heritage of Chitral.",
+      "keywords": "Chitrali songs, traditional Khowar music, Chitrali heritage, Chitral culture, Khowar songs",
+      "genre": "Traditional Music",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Bashonu"
+      }
+    }
+    </script>
+
     <script src="music-list.js"></script>
 </head>
+
+
 <body>
 
     <header>
         <a href="#" class="logo" onclick="removeIndexFromWURL()">
-            <img src="images/bashonu1.png" alt="">
+            <img src="images/bashonu1.png" alt="Bashonu - Traditional Chitrali Songs and Chitrali Music Platform" />
         </a>
         <div class="headerIcons">
             <div class="settings" onclick="window.open('https://forms.gle/S4PjJm2cEhA5zXCW6', '_blank')">
@@ -88,24 +107,6 @@
                 </div>
             </div>
 
-            <div class="playSong">
-                <div style="align-items: center; background: rgb(255, 255, 255); border-radius: 2px; color: rgb(255, 255, 255); display: flex; flex-direction: column; justify-content: center; margin: 20px auto; width: 100%; max-width: 800px; padding: 2px; position: relative; box-sizing: border-box;">
-                    <audio id="myAudio" style="display: none;">
-                        <source id="audioSource" src="" type="audio/mpeg">
-                        Your browser does not support the audio tag.
-                    </audio>
-                    <div style="display: flex; align-items: center; width: 100%; gap: 2px; box-sizing: border-box;">
-                        <button id="playPauseBtn" style="border: none; background-color: rgb(221, 221, 221); color: rgb(96, 26, 170); width: 40px; height: 40px; border-radius: 2px; cursor: pointer; flex-shrink: 0; box-sizing: border-box; display: flex; align-items: center; justify-content: center;">
-                            <i id="playPauseIcon" class="fas fa-play" style="font-size: 25px;"></i>
-                        </button>
-                        <div style="width: 1px; height: 40px; background-color: rgba(106, 106, 106,0.5);"></div> <!-- Line Separator -->
-                        <div style="background: rgb(238, 238, 238); border-radius: 2px; overflow: hidden; position: relative; flex-grow: 1; height: 40px; cursor: pointer; box-sizing: border-box;" id="progressContainer">
-                            <div id="progressBar" style="background: rgb(183, 183, 183); height: 100%; width: 0%; box-sizing: border-box;"></div>
-                        </div>
-                    </div>
-                </div>   
-            </div>
-
             <hr>
 
             <div class="lyricsdiv">
@@ -117,6 +118,26 @@
         </div>
         <div class="main"></div>
     </div>
+
+
+    <div class="playSong">
+        <div style="align-items: center; background: rgb(255, 255, 255); border-radius: 2px; color: rgb(255, 255, 255); display: flex; flex-direction: column; justify-content: center; margin: 20px auto; width: 100%; max-width: 800px; padding: 2px; position: relative; box-sizing: border-box;">
+            <audio id="myAudio" style="display: none;">
+                <source id="audioSource" src="" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+            <div style="display: flex; align-items: center; width: 100%; gap: 2px; box-sizing: border-box;">
+                <button id="playPauseBtn" style="border: none; background-color: rgb(221, 221, 221); color: rgb(96, 26, 170); width: 40px; height: 40px; border-radius: 2px; cursor: pointer; flex-shrink: 0; box-sizing: border-box; display: flex; align-items: center; justify-content: center;">
+                    <i id="playPauseIcon" class="fas fa-play" style="font-size: 25px;"></i>
+                </button>
+                <div style="width: 1px; height: 40px; background-color: rgba(106, 106, 106,0.5);"></div> <!-- Line Separator -->
+                <div style="background: rgb(238, 238, 238); border-radius: 2px; overflow: hidden; position: relative; flex-grow: 1; height: 40px; cursor: pointer; box-sizing: border-box;" id="progressContainer">
+                    <div id="progressBar" style="background: rgb(183, 183, 183); height: 100%; width: 0%; box-sizing: border-box;"></div>
+                </div>
+            </div>
+        </div>   
+    </div>
+    
 
     <script src="script.js"></script>
 </body>

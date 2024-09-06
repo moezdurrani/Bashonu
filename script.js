@@ -1,47 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // var dropdownTrigger = document.querySelector(".dropdown-trigger");
-  // var dropdownContent = document.querySelector(".dropdown-content");
-  // dropdownTrigger.addEventListener("click", function() {
-  //   dropdownContent.classList.toggle("active");
-  // });
 
   var dropdownTrigger = document.querySelector(".dropdown-trigger");
   var dropdownContent = document.querySelector(".dropdown-content");
-
-  // Function to toggle dropdown visibility
-  function toggleDropdown() {
-    if (dropdownContent.style.display === 'block') {
-        dropdownContent.style.display = 'none';
-    } else {
-        dropdownContent.style.display = 'block';
-    }
-  }
-
-    // Event listener for the dropdown trigger
-    dropdownTrigger.addEventListener("click", function(event) {
-      toggleDropdown();
-      event.stopPropagation(); // Prevent click from bubbling to document
-  });
-
-  // Event listener to close dropdown if clicking outside of it
-  document.addEventListener("click", function(event) {
-      var isClickInside = dropdownContent.contains(event.target) || dropdownTrigger.contains(event.target);
-
-      if (!isClickInside) {
-          dropdownContent.style.display = 'none';
-      }
-  });
-
-
-    // dropdownTrigger.addEventListener("click", function() {
-    //     if (dropdownContent.style.display === 'block') {
-    //         dropdownityle.display = 'none';
-    //     } else {
-    //         dropdownContent.style.display = 'block';
-    //     }
-    // });
-
-  
 
   const searchInput = document.getElementById('searchInput');
   const songDetails = document.querySelector('.main');
@@ -59,20 +19,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
   let currentLanguage = 'English'; // Default language
   let currentLyrics = [];
+  let firstSongLoaded = false; // Flag to check if the first song audio has been loaded
 
-  englishBtn.addEventListener('click', () => setLanguage('English'));
-  urduBtn.addEventListener('click', () => setLanguage('Urdu'));
-
-  playPauseBtn.addEventListener('click', togglePlayPause);
-  progressContainer.addEventListener('click', seekAudio);
-
-  function setLanguage(language) {
-    currentLanguage = language;
-    if (currentLyrics && currentLyrics.length > 0) {
-      displayLyrics(currentLyrics); // Redisplay the lyrics in the selected language
-    }
-  }
-
+  // Function to display songs in the list
   function displaySongs() {
     songDetails.innerHTML = '';
     const searchTerm = searchInput.value.toLowerCase();
@@ -89,15 +38,53 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
+  // Function to toggle dropdown visibility
+  function toggleDropdown() {
+    if (dropdownContent.style.display === 'block') {
+        dropdownContent.style.display = 'none';
+    } else {
+        dropdownContent.style.display = 'block';
+    }
+  }
+
+  // Event listener for the dropdown trigger
+  dropdownTrigger.addEventListener("click", function(event) {
+    toggleDropdown();
+    event.stopPropagation(); // Prevent click from bubbling to document
+  });
+
+  // Event listener to close dropdown if clicking outside of it
+  document.addEventListener("click", function(event) {
+    var isClickInside = dropdownContent.contains(event.target) || dropdownTrigger.contains(event.target);
+
+    if (!isClickInside) {
+      dropdownContent.style.display = 'none';
+    }
+  });
+
+  // Add event listeners for language selection
+  englishBtn.addEventListener('click', () => setLanguage('English'));
+  urduBtn.addEventListener('click', () => setLanguage('Urdu'));
+
+  // Add event listeners for play/pause and progress bar
+  playPauseBtn.addEventListener('click', togglePlayPause);
+  progressContainer.addEventListener('click', seekAudio);
+
+  // Function to set the selected language for lyrics
+  function setLanguage(language) {
+    currentLanguage = language;
+    if (currentLyrics && currentLyrics.length > 0) {
+      displayLyrics(currentLyrics); // Redisplay the lyrics in the selected language
+    }
+  }
+
+  // Function to create a song item in the list
   function createSongItem(song) {
     const songItem = document.createElement('div');
     songItem.className = 'song';
     songItem.style.background = 'rgba(255, 255, 255, 0.15)';
-    // songItem.style.border = '1px solid rgba(0, 0, 0, 0.5)';
     songItem.style.borderRadius = '0px';
     songItem.style.padding = '10px';
-    // songItem.style.backdropFilter = 'blur(20px)';
-    // songItem.style.boxShadow = '-6px 6px 6px rgba(10, 10, 10, 0.55)';
     songItem.style.marginBottom = '10px';
 
     const songName = document.createElement('p');
@@ -127,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
     songDetails.appendChild(songItem);
   }
 
+  // Function to fetch and display lyrics, and start playing the song immediately
   function fetchAndDisplayLyrics(lyricsFile, audioSrc) {
     fetch(`lyrics/${lyricsFile}`)
       .then(response => response.text())
@@ -136,12 +124,13 @@ document.addEventListener("DOMContentLoaded", function() {
         audioSource.src = audioSrc;
         audio.load();
         resetProgressBar();
-        audio.pause();
-        playPauseIcon.className = 'fas fa-play'; // Ensure the play icon is displayed
+        playPauseIcon.className = 'fas fa-pause'; // Switch the icon to pause since we are playing the song
+        audio.play(); // Automatically start playing the song once it is loaded
       })
       .catch(error => console.error('Error fetching the lyrics:', error));
   }
 
+  // Function to display the lyrics
   function displayLyrics(lines) {
     lyricsDisplay.innerHTML = '';  // Clear the previous lyrics
     const nameLyrics = document.querySelector('.nameLyrics');
@@ -159,7 +148,6 @@ document.addEventListener("DOMContentLoaded", function() {
     for (let i = lyricsStartIndex; i < lyricsEndIndex; i++) {
       const lyricLine = document.createElement('p');
       if (lines[i].trim() === '') {
-        // Check if the line is empty and ensure it renders as an empty space
         lyricLine.innerHTML = '&nbsp;'; // Use non-breaking space to ensure empty lines are visible
         lyricLine.style.height = '2em'; // Maintain line height for empty lines
       } else {
@@ -174,6 +162,7 @@ document.addEventListener("DOMContentLoaded", function() {
     lyricsContainer.classList.add("active");
   }
 
+  // Function to apply font styles based on the language
   function applyFontStyles(lyricLine, isEnglish) {
     if (isEnglish) {
       lyricLine.style.fontFamily = "'Comfortaa', cursive, sans-serif";
@@ -189,16 +178,17 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
+  // Event listener to close the lyrics display
   closeLyricsButton.addEventListener("click", function() {
     lyricsContainer.classList.remove("active");
   });
 
+  // Event listener to filter songs based on search input
   searchInput.addEventListener('input', function() {
     displaySongs();
   });
 
-  displaySongs(); // Initially display all songs
-
+  // Play/Pause toggle function
   function togglePlayPause() {
     if (audio.paused || audio.ended) {
       audio.play();
@@ -209,21 +199,36 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
+  // Handle progress bar update
   audio.ontimeupdate = function() {
     var percentage = (audio.currentTime / audio.duration) * 100;
     progressBar.style.width = percentage + '%';
   };
 
+  // Function to handle seek on progress bar
   function seekAudio(event) {
     var rect = event.currentTarget.getBoundingClientRect();
-    var x = event.clientX - rect.left; // correct calculation for the click position
+    var x = event.clientX - rect.left;
     var percent = x / rect.width;
     audio.currentTime = percent * audio.duration;
     progressBar.style.width = percent * 100 + '%';
-    console.log('Click position: %d, Percent: %f', x, percent); // Debugging information
   }
 
+  // Function to reset the progress bar
   function resetProgressBar() {
     progressBar.style.width = '0%';
   }
+
+  // **New Function to load the first song audio without selecting it**
+  function loadFirstSongAudio() {
+    const firstSong = allMusic[0]; // Get the first song
+    if (firstSong) {
+      audioSource.src = firstSong.src; // Set the audio source to the first song's audio file
+      audio.load(); // Load the audio without playing it
+    }
+  }
+
+  // Initially display all songs and load the first song's audio in the background
+  displaySongs();
+  loadFirstSongAudio(); // Load the first song's audio but do not select it
 });

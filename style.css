@@ -6,6 +6,16 @@
     src: url('Nafees222.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'Nafees Nastaleeq2';
+    src: url('nafees-nastaleeq.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Scheheraz';
+    src: url('ScheherazadeNew-Medium.ttf') format('truetype');
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -426,9 +436,21 @@ a {
     border-bottom: 1px solid rgb(0, 0, 0);
 }
 
-.playSong {
+/* .playSong {
     margin-top: 10px;
+} */
+
+.playSong {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(255, 255, 255);
+    padding: 0px;
+    z-index: 100;
+    /* box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); */
 }
+
 
 #playPauseBtn {
     border: none;
